@@ -8,7 +8,6 @@ public class PaypalService implements OnlinePaymentService{
     }
 
     public Double interest(Double amount, Integer months) {
-        Double installment = amount;
-        return amount + (installment * 0.01 * months);
+        return amount + (amount * 0.01 * months);
     }
 }
