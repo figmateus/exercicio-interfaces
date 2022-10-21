@@ -18,11 +18,8 @@ public class ContractService {
         this.contract = contract;
         this.months = months;
     }
-
     public void processContract(Contract contract, Integer months){
         LocalDate date = contract.getDateContract();
-        Calendar calendar = Calendar.getInstance();
-//        calendar.setTime(date);
         LocalDate installmentDate;
         PaypalService paypal = new PaypalService();
         for(int i = 0;i<months;i++){
@@ -36,11 +33,6 @@ public class ContractService {
             System.out.println("VALOR: "+installment.getAmount());
             System.out.println("------------------------------");
         }
-
-    }
-
-    public void addMonths(Date date, int numMonths) {
-
     }
     public Contract getContract() {
         return contract;
