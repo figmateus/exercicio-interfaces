@@ -5,16 +5,10 @@ import model.entities.Installment;
 import java.time.LocalDate;
 
 public class ContractService {
-
-    private Contract contract;
-    private Integer months;
-
     private OnlinePaymentService onlinePaymentService;
     public ContractService() {
     }
-    public ContractService(Contract contract, Integer months, OnlinePaymentService paymentService) {
-        this.contract = contract;
-        this.months = months;
+    public ContractService( OnlinePaymentService paymentService) {
         this.onlinePaymentService = paymentService;
     }
     public void processContract(Contract contract, Integer months){
@@ -31,20 +25,5 @@ public class ContractService {
             System.out.println("VALOR: "+installment.getAmount());
             System.out.println("------------------------------");
         }
-    }
-    public Contract getContract() {
-        return contract;
-    }
-
-    public void setContract(Contract contract) {
-        this.contract = contract;
-    }
-
-    public Integer getMonths() {
-        return months;
-    }
-
-    public void setMonths(Integer months) {
-        this.months = months;
     }
 }

@@ -31,14 +31,11 @@ public class Main {
 
         System.out.print("Valor do contrato:");
         Double contractValue = sc.nextDouble();
+        Contract contract = new Contract(contractNumber, date, contractValue);
         System.out.print("Numero de parcelas:");
         Integer parcel = sc.nextInt();
 
-
-        Contract contract = new Contract(contractNumber, date, contractValue);
-        ContractService service = new ContractService(contract, parcel, new PaypalService());
+        ContractService service = new ContractService(new PaypalService());
         service.processContract(contract, parcel);
-
-
     }
 }
