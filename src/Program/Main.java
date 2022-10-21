@@ -20,17 +20,14 @@ public class Main {
 
         Locale.setDefault(Locale.US);
         Scanner sc = new Scanner(System.in);
-        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
         System.out.println("Digite os dados do contrato");
         System.out.print("Numero do contrato:");
         int contractNumber = sc.nextInt();
         sc.nextLine();
         System.out.print("Data do contrato (dd/MM/yyyy):");
-        String dateContract = sc.nextLine();
-        System.out.println(dateContract);
-        Date date = formatter.parse(dateContract);
-
+        LocalDate date = LocalDate.parse(sc.nextLine(), fmt);
 
         System.out.print("Valor do contrato:");
         Double contractValue = sc.nextDouble();

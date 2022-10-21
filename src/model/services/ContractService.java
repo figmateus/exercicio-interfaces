@@ -3,7 +3,7 @@ package model.services;
 import model.entities.Contract;
 import model.entities.Installment;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -20,20 +20,28 @@ public class ContractService {
     }
 
     public void processContract(Contract contract, Integer months){
-        Date date = contract.getDateContract();
+        LocalDate date = contract.getDateContract();
         Calendar calendar = Calendar.getInstance();
-        calendar.setTime(date);
+//        calendar.setTime(date);
+        LocalDate installmentDate;
         PaypalService paypal = new PaypalService();
-
         for(int i = 0;i<months;i++){
+            installmentDate = date.plusMonths(i+1);
             Double valueInterest = paypal.interest(contract.getValue()/months, i);
             Double totalValue =  + paypal.paymentFee(valueInterest);
+            Installment installment = new Installment(installmentDate, totalValue);
 
-            Installment installment = new Installment(date)
+            System.out.println("--------PARCELA-"+(i+1)+"-------------");
+            System.out.println("DATA DA PARCELA: "+installment.getDueDate());
+            System.out.println("VALOR: "+installment.getAmount());
+            System.out.println("------------------------------");
         }
 
     }
 
+    public void addMonths(Date date, int numMonths) {
+
+    }
     public Contract getContract() {
         return contract;
     }

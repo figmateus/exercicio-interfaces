@@ -1,24 +1,23 @@
 package model.entities;
 
-import java.time.LocalDateTime;
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Contract {
     private Integer number;
-    private Date date;
+    private LocalDate date;
     private Double totalValue;
     private  Installment installment;
 
     public Contract() {
     }
 
-    public Contract(Integer number, Date date, Double totalValue) {
+    public Contract(Integer number, LocalDate date, Double totalValue) {
         this.number = number;
         this.date = date;
         this.totalValue = totalValue;
     }
 
-    public Contract(Integer number, Date date, Double totalValue,Installment installment) {
+    public Contract(Integer number, LocalDate date, Double totalValue,Installment installment) {
         this.installment = installment;
         this.number = number;
         this.date = date;
@@ -33,11 +32,11 @@ public class Contract {
         this.number = number;
     }
 
-    public Date getDateContract() {
+    public LocalDate getDateContract() {
         return date;
     }
 
-    public void setDateContract(Date date) {
+    public void setDateContract(LocalDate date) {
         this.date = date;
     }
 
